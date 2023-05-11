@@ -19,6 +19,9 @@ html {
 	--button-passive-color: #f5f4fa;
 
 	/* Others */
+	--anima-duration: 250ms;
+	--anima-function: cubic-bezier(0.4, 0, 0.2, 1);
+
 	--indent: 30px;
 	--items: 3;
 }
@@ -42,9 +45,10 @@ p {
 	margin: 0;
 }
 
-a{
+a {
 	text-decoration: none;
 }
+
 .link {
 	text-decoration: none;
 	color: currentColor;
@@ -56,8 +60,11 @@ a{
 	padding: 0;
 }
 
-img {
+img,
+svg {
 	display: block;
+	max-width: 100%;
+	height: auto;
 }
 
 /* reset end */
@@ -117,8 +124,22 @@ img {
 	color: var(--action-color);
 }
 
-.current.link {
+.link.current {
 	color: var(--action-color);
+	position: relative;
+}
+
+.current::after {
+	content: '';
+	position: absolute;
+	bottom: -33px;
+	left: 0;
+	display: inline-block;
+	width: 100%;
+	height: 4px;
+
+	background: var(--action-color);
+	border-radius: 2px;
 }
 
 /* ___________________nav__________________ */
@@ -141,6 +162,10 @@ img {
 	font-weight: 500;
 	line-height: calc(16 / 14);
 	letter-spacing: 0.02em;
+
+	transition-property: color;
+	transition-duration: var(--anima-duration);
+	transition-timing-function: var(--anima-function);
 }
 
 .nav-list a:hover,
@@ -161,6 +186,10 @@ img {
 	font-weight: 500;
 	line-height: calc(16 / 14);
 	letter-spacing: 0.02em;
+
+	transition-property: color;
+	transition-duration: var(--anima-duration);
+	transition-timing-function: var(--anima-function);
 }
 
 .contacts-list a:hover,
@@ -178,6 +207,10 @@ img {
 .contact-icon {
 	margin-right: 10px;
 	fill: currentColor;
+
+	transition-property: fill;
+	transition-duration: var(--anima-duration);
+	transition-timing-function: var(--anima-function);
 
 }
 
@@ -238,12 +271,15 @@ img {
 	align-items: center;
 	text-align: center;
 	letter-spacing: 0.06em;
+
+	transition-property: background-color, border;
+	transition-duration: var(--anima-duration);
+	transition-timing-function: var(--anima-function);
 }
 
 .hero-button:hover,
 .hero-button:focus,
 .hero-button:active {
-	color: var(--header-color);
 	background-color: #188ce8;
 	border: none;
 	cursor: pointer;
@@ -290,11 +326,7 @@ img {
 	justify-content: center;
 }
 
-/* ---------------- our team -------------- */
-
-.our-team {
-	background-color: var(--button-passive-color);
-}
+/* ----------- WORKING --------- */
 
 .working.title,
 .our-team-title {
@@ -314,6 +346,39 @@ img {
 	gap: 30px;
 }
 
+.working-thumb {
+	position: relative;
+}
+
+.working-description {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-weight: 700;
+	font-size: 14px;
+	line-height: calc(16/14);
+	text-align: center;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+
+	color: var(--header-color);
+
+	width: 100%;
+	min-height: 70px;
+	background: rgba(47, 48, 58, 0.8);
+}
+
+
+/* ---------------- our team -------------- */
+
+.our-team {
+	background-color: var(--button-passive-color);
+}
 
 
 .team-members {
@@ -367,6 +432,10 @@ img {
 	align-items: center;
 	justify-content: center;
 
+	transition-property: background-color;
+	transition-duration: var(--anima-duration);
+	transition-timing-function: var(--anima-function);
+
 }
 
 .team-link:hover,
@@ -376,10 +445,14 @@ img {
 
 .team-icon {
 	fill: #AFB1B8;
+
+	transition-property: fill;
+	transition-duration: var(--anima-duration);
+	transition-timing-function: var(--anima-function);
 }
 
 .team-link:hover .team-icon,
-.team-link:focus .team-icon{
+.team-link:focus .team-icon {
 	fill: var(--header-color);
 }
 
@@ -414,18 +487,23 @@ img {
 	background-color: inherit;
 	border: 1px solid #afb1b8;
 	border-radius: 4px;
+
+	transition-property: border;
+	transition-duration: var(--anima-duration);
+	transition-timing-function: var(--anima-function);
 }
 
 .clients-icon {
 	fill: #AFB1B8;
+
+	transition-property: fill;
+	transition-duration: var(--anima-duration);
+	transition-timing-function: var(--anima-function);
 }
 
 .clients-link:hover,
 .clients-link:focus {
-	background-color: inherit;
 	border: 1px solid var(--action-color);
-	border-radius: 4px;
-
 }
 
 .clients-link:hover .clients-icon,
@@ -441,7 +519,7 @@ img {
 	padding: 60px 0;
 }
 
-.footer>.container{
+.footer>.container {
 	display: flex;
 	gap: 70px;
 	align-items: baseline;
@@ -470,6 +548,10 @@ img {
 
 .adress-connect.link {
 	color: rgba(255, 255, 255, 0.6);
+
+	transition-property: color;
+	transition-duration: var(--anima-duration);
+	transition-timing-function: var(--anima-function);
 }
 
 .adress-connect.link:active,
@@ -480,19 +562,19 @@ img {
 
 /* ------------------ FOOTER-CONECT -------------- */
 
-.footer-title{
+.footer-title {
 	font-weight: 700;
-		font-size: 14px;
-		line-height: calc(16/14);
-		letter-spacing: 0.03em;
-		text-transform: uppercase;
-	
-		color: #FFFFFF;
+	font-size: 14px;
+	line-height: calc(16/14);
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
 
-		margin-bottom: 20px;
+	color: #FFFFFF;
+
+	margin-bottom: 20px;
 }
 
-.footer-list{
+.footer-list {
 	display: flex;
 	gap: 10px;
 }
@@ -502,23 +584,101 @@ img {
 }
 
 
-.footer-social-link{
-	display:flex ;
+.footer-social-link {
+	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 44px;
 	height: 44px;
-	background-color:rgba(255, 255, 255, 0.1);
+	background-color: rgba(255, 255, 255, 0.1);
 	border-radius: 50%;
+
+	transition-property: background-color;
+	transition-duration: var(--anima-duration);
+	transition-timing-function: var(--anima-function);
 }
 
 .footer-social-link:hover,
-.footer-social-link:focus{
+.footer-social-link:focus {
 	background-color: var(--action-color);
 }
 
+/* ------------------------ BACKDROP ---------------- */
 
-/* portfolio */
+.backdrop {
+	position: fixed;
+	left: 0;
+	top: 0;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+	position: relative;
+
+	width: 528px;
+	height: 581px;
+
+	background: #FFFFFF;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+}
+
+.modal-btn {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 30px;
+	height: 30px;
+	background: #FFFFFF;
+	border-radius: 50%;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+
+	cursor: pointer;
+}
+
+.modal.modal-animation {
+	animation: scale-up-center var(--anima-duration) var(--anima-function) forwards;
+}
+
+.modal-field {
+	display: flex;
+	flex-direction: column;
+
+	padding: 40px;
+}
+
+.modal-strong {
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 23px;
+	text-align: center;
+	letter-spacing: 0.03em;
+
+	color: var(--font-submain-color);
+
+	margin-bottom: 12px;
+}
+
+
+.is-hidden {
+	visibility: hidden;
+	opacity: 0;
+	pointer-events: none;
+}
+
+
+/*------------------ portfolio ---------------*/
 
 
 .main.main-portfolio {
@@ -550,6 +710,10 @@ button {
 	border-style: none;
 
 	padding: 6px 22px;
+
+	transition-property: background-color, color, box-shadow;
+	transition-duration: var(--anima-duration);
+	transition-timing-function: var(--anima-function);
 }
 
 .item-button:hover,
@@ -557,7 +721,6 @@ button {
 	color: var(--header-color);
 	background-color: var(--action-color);
 	box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
-	border-radius: 4%;
 }
 
 .examples-list.list {
@@ -569,10 +732,55 @@ button {
 
 .examples-list-item {
 	flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / (var(--items)));
+
+	transition-property: box-shadow;
+	transition-duration: var(--anima-duration);
+	transition-timing-function: var(--anima-function);
 }
 
 .examples-list-item:hover {
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.examples-thumb {
+	position: relative;
+	width: 370px;
+	height: 294px;
+	overflow: hidden;
+}
+
+.examples-discription {
+	position: absolute;
+	left: 0;
+	bottom: -100%;
+
+	opacity: 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 63px 24px;
+
+	width: 100%;
+	height: 100%;
+
+	font-size: 18px;
+	line-height: calc(28/18);
+	letter-spacing: 0.03em;
+	text-align: left;
+
+	color: var(--header-color);
+
+	background: rgba(33, 150, 243, 0.9);
+
+	transition-property: transform, opacity;
+	transition-duration: var(--anima-duration);
+	transition-timing-function: var(--anima-function);
+}
+
+.examples-list-item:hover .examples-discription {
+	transform: translateY(-100%);
+	opacity: 1;
 }
 
 
@@ -595,4 +803,24 @@ button {
 	font-size: 16px;
 	line-height: calc(30 / 16);
 	letter-spacing: 0.03em;
+}
+
+
+/* ----------- ANIMATIONS --------------- */
+
+/*
+ * ----------------------------------------
+ * animation scale-up-center
+ * ----------------------------------------
+ */
+@keyframes scale-up-center {
+	0% {
+		transform: scale(0.5);
+		transform-origin: 50% 0%;
+	}
+
+	100% {
+		transform: scale(1);
+		transform-origin: 50% 0%;
+	}
 }
